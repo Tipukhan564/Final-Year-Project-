@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Signup</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #1b1b1b;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+        }
+
+        .login-box {
+            background-color: #2c2c2c;
+            border-radius: 8px;
+            padding: 40px;
+            text-align: center;
+            width: 400px;
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .logo img {
+            width: 120px;
+        }
+
+        .login-register-switch {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+
+        .switch-button {
+            background: none;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+        }
+
+        .switch-button.active {
+            background-color: #00aaff;
+            color: white;
+            box-shadow: 0 0 10px #00aaff, 0 0 20px #00aaff, 0 0 30px #00aaff;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .input-group label {
+            color: #b1b1b1;
+            font-size: 14px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 4px;
+            border: 1px solid #444;
+            background-color: #333;
+            color: #fff;
+            position: relative;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 35px;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        .options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .options a {
+            color: #00aaff;
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        .sign-in-button {
+            background-color: #00aaff;
+            border: none;
+            color: white;
+            padding: 12px 20px;
+            width: 100%;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .sign-in-button:hover {
+            background-color: #008ecc;
+        }
+
+        .social-signin p {
+            color: #b1b1b1;
+            margin-top: 20px;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="login-box">
+            <div class="logo">
+                <img src="logo.png" alt="Logo"> <!-- Replace with your logo -->
+            </div>
+            <div class="login-register-switch">
+                <button class="switch-button active" id="loginButton">Sign in</button>
+                <button class="switch-button" id="signupButton">Register</button>
+            </div>
+
+            <!-- Login Form -->
+            <form id="loginForm">
+                <div class="input-group">
+                    <label for="usernameLogin">Username</label>
+                    <input type="text" id="usernameLogin" name="username" placeholder="Username" required>
+                </div>
+                <div class="input-group" style="position: relative;">
+                    <label for="passwordLogin">Password</label>
+                    <input type="password" id="passwordLogin" name="password" placeholder="Password" required>
+                    <span class="toggle-password" id="togglePasswordLogin">👁️</span>
+                </div>
+                <div class="options">
+                    <label>
+                        <input type="checkbox" name="remember"> Remember me
+                    </label>
+                    <a href="#">Forgot Password?</a>
+                </div>
+                <button type="submit" class="sign-in-button">Sign in</button>
+            </form>
+
+            <!-- Signup Form -->
+            <form id="signupForm" class="hidden">
+                <div class="input-group">
+                    <label for="nameSignup">Name</label>
+                    <input type="text" id="nameSignup" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="input-group">
+                    <label for="usernameSignup">Username</label>
+                    <input type="text" id="usernameSignup" name="username" placeholder="Choose a Username" required>
+                </div>
+                <div class="input-group">
+                    <label for="emailSignup">Email</label>
+                    <input type="email" id="emailSignup" name="email" placeholder="Email" required>
+                </div>
+                <div class="input-group" style="position: relative;">
+                    <label for="passwordSignup">Password</label>
+                    <input type="password" id="passwordSignup" name="password" placeholder="Password" required>
+                    <span class="toggle-password" id="togglePasswordSignup">👁️</span>
+                </div>
+                <div class="input-group" style="position: relative;">
+                    <label for="confirmPasswordSignup">Confirm Password</label>
+                    <input type="password" id="confirmPasswordSignup" name="confirm_password" placeholder="Confirm Password" required>
+                    <span class="toggle-password" id="toggleConfirmPasswordSignup">👁️</span>
+                </div>
+                <div class="options">
+                    <label>
+                        <input type="checkbox" name="acknowledge" required> I acknowledge the terms and conditions
+                    </label>
+                </div>
+                <button type="submit" class="sign-in-button">Register</button>
+            </form>
+
+            <div class="social-signin">
+                <p>or sign in with</p>
+                <!-- Add your social media login buttons here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginForm = document.getElementById('loginForm');
+            const signupForm = document.getElementById('signupForm');
+            const loginButton = document.getElementById('loginButton');
+            const signupButton = document.getElementById('signupButton');
+        
+            // Function to switch forms based on URL query parameter
+            function showFormBasedOnURL() {
+                const urlParams = new URLSearchParams(window.location.search);
+                const formType = urlParams.get('form');
+        
+                // Check if 'form' is 'signup' or default to 'login'
+                if (formType === 'signup') {
+                    signupForm.classList.remove('hidden');
+                    loginForm.classList.add('hidden');
+                    signupButton.classList.add('active');
+                    loginButton.classList.remove('active');
+                } else {
+                    // Default to showing the login form
+                    loginForm.classList.remove('hidden');
+                    signupForm.classList.add('hidden');
+                    loginButton.classList.add('active');
+                    signupButton.classList.remove('active');
+                }
+            }
+        
+            // Call the function when the page loads
+            showFormBasedOnURL();
+        
+            // Switching between Login and Signup forms using the buttons
+            loginButton.addEventListener('click', () => {
+                signupForm.classList.add('hidden');
+                loginForm.classList.remove('hidden');
+                loginButton.classList.add('active');
+                signupButton.classList.remove('active');
+            });
+        
+            signupButton.addEventListener('click', () => {
+                loginForm.classList.add('hidden');
+                signupForm.classList.remove('hidden');
+                signupButton.classList.add('active');
+                loginButton.classList.remove('active');
+            });
+        
+            // Toggle password visibility for login form
+            document.getElementById('togglePasswordLogin').addEventListener('click', () => {
+                const input = document.getElementById('passwordLogin');
+                input.type = input.type === 'password' ? 'text' : 'password';
+                document.getElementById('togglePasswordLogin').textContent = input.type === 'password' ? '👁️' : '🙈';
+            });
+        
+            // Toggle password visibility for signup form
+            document.getElementById('togglePasswordSignup').addEventListener('click', () => {
+                const input = document.getElementById('passwordSignup');
+                input.type = input.type === 'password' ? 'text' : 'password';
+                document.getElementById('togglePasswordSignup').textContent = input.type === 'password' ? '👁️' : '🙈';
+            });
+        
+            // Toggle confirm password visibility for signup form
+            document.getElementById('toggleConfirmPasswordSignup').addEventListener('click', () => {
+                const input = document.getElementById('confirmPasswordSignup');
+                input.type = input.type === 'password' ? 'text' : 'password';
+                document.getElementById('toggleConfirmPasswordSignup').textContent = input.type === 'password' ? '👁️' : '🙈';
+            });
+        });
+        </script>        
+</body>
+</html>
+
+

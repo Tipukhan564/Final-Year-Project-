@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parkinson's Disease Awareness</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        header p {
+            font-size: 1.1em;
+            margin-top: 10px;
+        }
+        nav {
+            margin-top: 20px;
+        }
+        nav a {
+            text-decoration: none;
+            color: #007bff;
+            padding: 10px 20px;
+            background-color: white;
+            border-radius: 4px;
+            margin: 5px;
+            border: 1px solid #007bff;
+            transition: background-color 0.3s;
+        }
+        nav a:hover {
+            background-color: #007bff;
+            color: white;
+        }
+        section {
+            padding: 40px;
+            max-width: 1200px;
+            margin: auto;
+            text-align: center;
+        }
+        .container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .box {
+            width: 30%;
+            padding: 20px;
+            margin: 10px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .box:hover {
+            transform: translateY(-5px);
+        }
+        .box h3 {
+            margin-bottom: 15px;
+            color: #007bff;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 0.9em;
+        }
+        /* Login Button */
+        .login-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .login-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>Parkinson's Disease Awareness</h1>
+        <p>Understanding, Diagnosing, and Managing Parkinson's Disease</p>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+            <a href="#">Resources</a>
+            <!-- Modified login button to route to signup with form=login -->
+            <button class="login-btn" onclick="location.href='{% url 'signup' %}?form=login'">Login</button>
+        </nav>
+    </header>
+
+    <!-- Main Section -->
+    <section>
+        <h2>What is Parkinson's Disease?</h2>
+        <p>Parkinson's disease is a progressive nervous system disorder that affects movement. Learn more about the symptoms, diagnosis, and treatments available to help manage this condition.</p>
+        <div class="container">
+            <div class="box">
+                <h3>Symptoms</h3>
+                <p>Parkinson's symptoms include tremors, stiffness, and balance problems. Early signs may be subtle and progress over time.</p>
+            </div>
+            <div class="box">
+                <h3>Diagnosis</h3>
+                <p>Diagnosing Parkinson's involves a combination of medical history, physical examinations, and specialized tests like DaTscan.</p>
+            </div>
+            <div class="box">
+                <h3>Treatment Options</h3>
+                <p>While there is no cure, treatment options like medication, therapy, and surgery can help manage symptoms.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>© 2024 Parkinson's Disease Awareness. All Rights Reserved | <a href="{% url 'signup' %}?form=login" style="color: #007bff;">Login</a></p>
+    </footer>
+
+</body>
+</html>
+
+
